@@ -1,0 +1,17 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<div>
+    {% for i in orderdict %}
+      <div>
+        <h6 class="my-0">OrderId: {{i.orderid}}</h6>
+        {% for j in i.products %}
+            <p class="text-muted">{{j.name}} x {{j.quantity}}</p>
+        {% endfor %}   
+      </div>
+      <p class="text-muted adminorderspara">{{i.date_ordered}}</p>
+      <p class="text-muted">{{i.address}}</p>
+    {% endfor %}
+</div>
+{% endblock content %}
+

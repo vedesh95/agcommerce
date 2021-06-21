@@ -1,0 +1,68 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+{% for message in messages%}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong></strong> {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endfor %}
+<div class="container col-10">
+  <main>
+    <div class="py-5 text-center">
+      <h2>Checkout form</h2>
+      <p class="lead">Please enter the details to Continue.</p>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Your cart</span>
+          <span class="badge bg-secondary rounded-pill">{{order.get_cart_items}}</span>
+        </h4>
+        <ul class="list-group mb-3">
+          {% for item in items %}
+              <li class="list-group-item d-flex justify-content-between lh-sm">
+                <div>
+                  <h6 class="my-0">{{item.product.name}}</h6>
+                  <small class="text-muted">Item desc</small>
+                </div>
+                <span class="text-muted">₹ {{item.product.price}}</span>
+              </li>
+          {% endfor %}
+
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (Rupees)</span>
+            <strong>₹ {{order.get_cart_total}}</strong>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Billing address</h4>
+        <form class="needs-validation" action="/processorder" method="POST" novalidate>{% csrf_token %}
+          <div class="row g-3">
+
+
+            <div class="col-12">
+              <label for="address" class="form-label">Address</label>
+              <input type="text" class="form-control" id="address" placeholder="Enter your Address" value="" name="address" required>
+            </div>
+            <div class="col-12">
+               <label for="city" class="form-label">City</label>
+               <input type="text" class="form-control" id="city" placeholder="Enter your City" value="" name="city" required>
+             </div>
+             <div class="col-12">
+               <label for="state" class="form-label">State</label>
+               <input type="text" class="form-control" id="state" placeholder="Enter your State" value="" name="state" required>
+             </div>
+             <div class="col-12">
+               <label for="zipcode" class="form-label">Zip Code</label>
+               <input type="text" class="form-control" id="zipcode" placeholder="Enter your zipcode" value="" name="zipcode" required>
+             </div>
+             <button id="form-button2" class="w-100 btn btn-primary btn-md hidden" type="submit">Pay with Paytm</button>
+      </form>
+      </div>
+    </div>
+  </main>
+
+{% endblock content %}

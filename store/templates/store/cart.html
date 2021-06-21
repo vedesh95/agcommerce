@@ -1,0 +1,46 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <div class="col-md-6 col-lg-8 order-md-last">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Your cart</span>
+        <span class="badge bg-secondary rounded-pill">{{order.get_cart_items}}</span>
+      </h4>
+      <ul class="list-group mb-3">
+           {%for item in items%}
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div class="d-flex justify-content-between">
+                  <img class="cart_image" src={{item.product.image}} alt="">
+                  <div>
+                    <h6 class="my-0">{{item.product.name}}</h6>
+                    <small class="text-muted">Best Ganesha ever</small>
+                    <div>
+                        <strong><small class="text">₹{{item.product.price}}</small></strong>
+                    </div>
+
+                    <div class="shopping_cart_quantity">
+                        
+                        <a href="/updateItem/{{item.product.id}}/add"><button class="btn btn-secondary btn-circle btn-sm btn_margin" type="submit" name="button">+</button></a>
+                        <small class="text">{{item.quantity}}</small>
+                        <a href="/updateItem/{{item.product.id}}/remove"><button class="btn btn-secondary btn-circle btn-sm btn_margin" type="submit" name="button">-</button></a>
+                    </div>
+                        
+
+                  </div>
+              </div>
+              <span class="text-muted">₹ {{item.get_total}}</span>
+            </li>
+          {% endfor %}
+
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Total (Rupees)</span>
+          <strong>₹ {{order.get_cart_total}}</strong>
+        </li>
+      </ul>
+      <a href="/checkout"><button class="w-100 btn btn-primary btn-md" type="submit">Proceed to Checkout</button></a>
+    </div>
+</div>
+
+{% endblock content %}
+

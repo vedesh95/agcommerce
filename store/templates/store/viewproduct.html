@@ -1,0 +1,25 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col align-self-start"></div>
+    <div class="col-4 align-self-center">
+        <div class="card shadow-sm">
+            <img src="{{product.image}}" alt="product.image" style="height: 350px;">
+            <div class="card-body">
+                <h6>{{product.name}}</h6>
+                <p class="card-text">{{product.desc}}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    <a href="/updateItem/{{product.id}}/addhome"><button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button></a>
+                </div>
+                <small class="text-muted"> ₹ {{product.price}}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col align-self-start"></div>
+</div>
+
+{% endblock content %}
+

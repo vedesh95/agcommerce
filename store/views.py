@@ -69,6 +69,7 @@ def updateItem(request,id,action):
         if orderItem.quantity <= 0:
             orderItem.delete()
         if flag==1:
+            messages.success(request,'Item is added to cart')
             return redirect('/viewproduct/'+str(id))
         return redirect("/cart")
     else:
@@ -104,7 +105,7 @@ def processorder(request):
                 'INDUSTRY_TYPE_ID': 'Retail',
                 'WEBSITE': 'WEBSTAGING',
                 'CHANNEL_ID': 'WEB',
-                'CALLBACK_URL':'http://127.0.0.1:8000/handlerequest/',
+                'CALLBACK_URL':'https://agcommerce.herokuapp.com/handlerequest/',
 
         }
         param_dict['CHECKSUMHASH'] = Checksum.generate_checksum(param_dict, MERCHANT_KEY)

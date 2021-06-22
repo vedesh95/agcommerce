@@ -1,7 +1,7 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
-<div class="container">
+<div class="container mt-5">
   <div class="row justify-content-center align-items-center">
     <div class="col-md-6 order-md-2 mb-4">
       <ul class="list-group mb-3">
@@ -17,6 +17,8 @@
           </div>
           <span class="text-muted">₹{{i.total}}</span>
         </li>
+      {% empty %}
+          <a href="/"><button class="w-100 btn btn-primary btn-md" type="submit">Your cart is empty. Shop now</button></a>
       {% endfor %}
       </ul>
 

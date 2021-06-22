@@ -182,7 +182,7 @@ def handlelogin(request):
             login(request,myuser)
             return redirect('/')
         else:
-            messages.error(request,"Invalid Credentials")
+            messages.warning(request,"Invalid Credentials")
     return render(request,"store/login.html")
 def handlelogout(request):
     logout(request)

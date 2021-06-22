@@ -7,7 +7,7 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 {% endfor %}
-<div class="container col-10">
+<div class="container col-10 mb-5">
   <main>
     <div class="py-5 text-center">
       <h2>Checkout form</h2>
@@ -25,7 +25,7 @@
               <li class="list-group-item d-flex justify-content-between lh-sm">
                 <div>
                   <h6 class="my-0">{{item.product.name}}</h6>
-                  <small class="text-muted">Item desc</small>
+                  <small class="text-muted">Quantity: {{item.quantity}}</small>
                 </div>
                 <span class="text-muted">₹ {{item.product.price}}</span>
               </li>

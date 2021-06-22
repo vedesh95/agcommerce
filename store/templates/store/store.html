@@ -8,60 +8,56 @@
     </div>
 {% endfor %}
 
-<div class="mb-5">
-  <div class="album py-5">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
-      {%for i in products%}
-      <div class="col">
-        <div class="card shadow-sm">
-          <img src="{{i.image}}" alt="" style="height: 225px;">
-          <div class="card-body">
-            <h6>{{i.name}}</h6>
-            <p style="word-break: break-all;"><small>{{i.desc |slice:"0:75"}}</small></p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <a href="/viewproduct/{{i.id}}"><button class="btn btn-primary btn-sm"  type="button" name="button">View Product</button></a> 
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+            {%for i in products%}
+              <div class="col">
+                  <div class="card shadow-sm">
+                      <img src="{{i.image}}" alt="" style="height: 275px;">
+                      <div class="card-body">
+                          <div class="d-flex justify-content-between align-items-center">
+                          <h6 class="card-text">{{i.name}}</h6>
+                              <small class="text">₹{{i.price}}</small>
+                          </div>
+                          <p class="card-text text-break"><small>{{i.desc |slice:"0:70"}}</small></p>
+                          <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                              <a href="/viewproduct/{{i.id}}"><button type="button" class="btn btn-sm btn-outline-secondary">View Product</button></a>
+                            </div>
+                        </div>
+                      </div>
+                  </div>
               </div>
-              <small class="text-muted">₹{{i.price}}</small>
-            </div>
-          </div>
-        </div>
+            {%endfor%}
       </div>
-      {%endfor%}
 </div>
-</div>
-<div class="container text-center div_margin_top">
+<div class="col-6 mx-auto mt-5"><hr></div>
+<div class="container text-center mt-5">
     <div class="row">
       <div class="col-lg-4">
         <img class="rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDA7OcpUI_46Mg8AyUCMiOGx5IGLsemolFuQ&usqp=CAU" alt="Generic placeholder image" width="140" height="140">
-        <!-- <h2>Heading</h2> -->
         <p>We select the materials required with great care. All the products are made form premium quality durable materials.</p>
-        <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-      </div><!-- /.col-lg-4 -->
+      </div>
       <div class="col-lg-4">
         <img class="rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmJtvEYV_Yfb8c19lG-qcvgcxhU_INfAXJ7w&usqp=CAU" alt="Generic placeholder image" width="140" height="140">
-        <!-- <h2>Heading</h2> -->
         <p>Enhance beauty of your home and make it decorative with our Prodcuts. Handcrafted decors are available.</p>
-        <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-      </div><!-- /.col-lg-4 -->
+      </div>
       <div class="col-lg-4">
         <img class="rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqx8zqJGNkYRWUUzvDcOYC99JF2mp10QmZBA&usqp=CAU" alt="Generic placeholder image" width="140" height="140">
-        <!-- <h2>Heading</h2> -->
         <p>Get the products especially for the festive seasons delivered right at your Doorstep.Special festive Decors are also available.</p>
-        <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
       </div>
     </div>
 </div>
-<div class="d-flex justify-content-around mt-5">
-    <div class="d-flex justify-content-center" >
-        <a href="https://www.linkedin.com/in/vedesh-gawande-089a36168/">
-            <img class="contacts" alt="Linkedin" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJgAAACYCAMAAAAvHNATAAAAZlBMVEUAd7f///8AdbYAc7UAZ7Dp8/jp8PZFisDI3u0AcLRIk8UAabFupc7t9Pk6iL+2z+QAbLLV5PCYu9plnsoNfLqszOMuhL3C1+mfwNze6/Qofrrz+ftIjsJUlcZ6pM2PudmBr9NunMlNvX1KAAAEhUlEQVR4nO2c23arIBCGEWwMTTwQj1Fz6Pu/5MYmaU3CEKytM3st/ou2F6hfGQ7DDMCCq2K1y5OCIapI8p2Kbzzs+ruMhBQCk4sxoRGi8g5MFRky1E0iK9Q3WFoQwRokivQGlm44Ns1YfJNewFRBikuTDdbUYJTseJEoBrAyw+Z4VlYGLI7IVZiusihmiiCXJlNsJ7EhTJI7ltOssZwlNMEShjpvwyKK5SCu53zBiE0NbPCE2uQ9abn+CxvmWyKLTvXFcevWu54KGpdt/eVODh5unZAY8YRogkc12C6uFm/rJ64gqFtsMtGuDFxB8IZMxtnayKWdyhYVLDPZ8WpNTO9NHkCuIMgx++beArbHM6Y4WriCYItWZRJq+dcqC5G4OLNy6fUL0pQu8xdgWLaUpxdgDRLYBh7ELkqRwCyj60U10rT0GgzLlClRU5Jt/MI2Uw7Cmi05fwEmsNZM0t7IFNaU9GoSP6I5sVwoW4Uhrn7FuwXsgOn1Z89Lt5vKDSKXNibkkq0xsQayzNzMFHqc4JqeeFBNIPLOw/Pjmnd1DkmEo2TbdCOsrqlIBFUGZdk2Vas4jlcq3UpKeQouZZH0fR8xKUlYcSR+ETaGFxVxoSWl/vELzUI86ydldAcSbXI45Pl2u80PfaU70pxhWoZDd7xXFd6PZCKsnspE7C6PLUORl7Vadbchsdur9NSH2U8rTm5Nsc74LjrAe2O4qvzKZHPZns3eQNz0/EfDteiN79Pe2Oh1VWwuc1veyaKBA23d+pD9oNIk5MOuv/1X2GlLhjKCHzuowPVd1eS2xitz0FpP5NEX2AYMow0Gl8Z4/L2689R1DY8gsLdvsNAGJg9vL7m0yol9YDaYPLww403raXU2F2zTO3LpOpvUOeeCtU52vKiZ4k7NBXvd7keaEgqZCWaPej+9snXvADPBJmpCM1sWLOidB9qFwdxjpwuDdc7xkIXB3IOnS4N1VGvMOba1OJhr3nhxsD1VU3aOu9h+DUydjh8fx2NjC+p+6uTWL38HLG5YKD+XdDKsSrsjlC5YY6ofBWJE9mF1hZSbK/sbYPVDfEgK296EYDEwxR+NI3pgufcptxXTfLDYsAlI2jIubu7ifDBjLwstxjwvA7Y3GkZu4SfcdnzPBjubP9PCVbZ2yrjMBYuB91oSjmoRMChrLs8w2CKmhFoyGEQaWqXLQDYTLIZWF1yCE9PeaYSdCQb/9yEItnI6uDJ3wQs25BB0M2KnZe9MMDgcAcfU4moBMHgUh3fBLAIGbzD7H8GcTmJ4MA/mwTyYB/NgHsyDeTAP5sE8mAfzYB7Mg3kwD+bBPJgH+0MwcB/sCMy+D/ZvwOCdw6OTb1kJlAngb8CHSlcuWJaz4qPK4AmQfLccPuYVlEp1Sz0PmUXTNon4LnMrcuNXUlsqQZh3tE84fitE8v6o5OEYgeDPZd5be+JR8Or5mb6dcIiHG043PD7tUsblvfgH16aI6O1QBd1rvshejEb2Kjmyl++Rva6Q7AWPdK/EpHuJKNlrV+leVEv3at+A7GXIAb3ro/8BvjhgaC2DKx0AAAAASUVORK5CYII="/>
-        </a>
-        <a href="https://www.codechef.com/users/vedesh95">
-            <img class="contacts" alt="Codechef" src="data:image/png;base64,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" />
-        </a>
-    </div>
-</div>
-<p class="mt-2 text-center text-muted">© 2020 Copyright:Vedesh Gawande</p>
-
+<footer class="footer mt-auto py-3">
+  <div class="d-flex justify-content-center" >
+      <a href="https://www.linkedin.com/in/vedesh-gawande-089a36168/">
+          <img class="contacts" alt="Linkedin" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJgAAACYCAMAAAAvHNATAAAAZlBMVEUAd7f///8AdbYAc7UAZ7Dp8/jp8PZFisDI3u0AcLRIk8UAabFupc7t9Pk6iL+2z+QAbLLV5PCYu9plnsoNfLqszOMuhL3C1+mfwNze6/Qofrrz+ftIjsJUlcZ6pM2PudmBr9NunMlNvX1KAAAEhUlEQVR4nO2c23arIBCGEWwMTTwQj1Fz6Pu/5MYmaU3CEKytM3st/ou2F6hfGQ7DDMCCq2K1y5OCIapI8p2Kbzzs+ruMhBQCk4sxoRGi8g5MFRky1E0iK9Q3WFoQwRokivQGlm44Ns1YfJNewFRBikuTDdbUYJTseJEoBrAyw+Z4VlYGLI7IVZiusihmiiCXJlNsJ7EhTJI7ltOssZwlNMEShjpvwyKK5SCu53zBiE0NbPCE2uQ9abn+CxvmWyKLTvXFcevWu54KGpdt/eVODh5unZAY8YRogkc12C6uFm/rJ64gqFtsMtGuDFxB8IZMxtnayKWdyhYVLDPZ8WpNTO9NHkCuIMgx++beArbHM6Y4WriCYItWZRJq+dcqC5G4OLNy6fUL0pQu8xdgWLaUpxdgDRLYBh7ELkqRwCyj60U10rT0GgzLlClRU5Jt/MI2Uw7Cmi05fwEmsNZM0t7IFNaU9GoSP6I5sVwoW4Uhrn7FuwXsgOn1Z89Lt5vKDSKXNibkkq0xsQayzNzMFHqc4JqeeFBNIPLOw/Pjmnd1DkmEo2TbdCOsrqlIBFUGZdk2Vas4jlcq3UpKeQouZZH0fR8xKUlYcSR+ETaGFxVxoSWl/vELzUI86ydldAcSbXI45Pl2u80PfaU70pxhWoZDd7xXFd6PZCKsnspE7C6PLUORl7Vadbchsdur9NSH2U8rTm5Nsc74LjrAe2O4qvzKZHPZns3eQNz0/EfDteiN79Pe2Oh1VWwuc1veyaKBA23d+pD9oNIk5MOuv/1X2GlLhjKCHzuowPVd1eS2xitz0FpP5NEX2AYMow0Gl8Z4/L2689R1DY8gsLdvsNAGJg9vL7m0yol9YDaYPLww403raXU2F2zTO3LpOpvUOeeCtU52vKiZ4k7NBXvd7keaEgqZCWaPej+9snXvADPBJmpCM1sWLOidB9qFwdxjpwuDdc7xkIXB3IOnS4N1VGvMOba1OJhr3nhxsD1VU3aOu9h+DUydjh8fx2NjC+p+6uTWL38HLG5YKD+XdDKsSrsjlC5YY6ofBWJE9mF1hZSbK/sbYPVDfEgK296EYDEwxR+NI3pgufcptxXTfLDYsAlI2jIubu7ifDBjLwstxjwvA7Y3GkZu4SfcdnzPBjubP9PCVbZ2yrjMBYuB91oSjmoRMChrLs8w2CKmhFoyGEQaWqXLQDYTLIZWF1yCE9PeaYSdCQb/9yEItnI6uDJ3wQs25BB0M2KnZe9MMDgcAcfU4moBMHgUh3fBLAIGbzD7H8GcTmJ4MA/mwTyYB/NgHsyDeTAP5sE8mAfzYB7Mg3kwD+bBPJgH+0MwcB/sCMy+D/ZvwOCdw6OTb1kJlAngb8CHSlcuWJaz4qPK4AmQfLccPuYVlEp1Sz0PmUXTNon4LnMrcuNXUlsqQZh3tE84fitE8v6o5OEYgeDPZd5be+JR8Or5mb6dcIiHG043PD7tUsblvfgH16aI6O1QBd1rvshejEb2Kjmyl++Rva6Q7AWPdK/EpHuJKNlrV+leVEv3at+A7GXIAb3ro/8BvjhgaC2DKx0AAAAASUVORK5CYII="/>
+      </a>
+      <a href="https://www.codechef.com/users/vedesh95">
+          <img class="contacts" alt="Codechef" src="data:image/png;base64,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" />
+      </a>
+  </div>
+  <p class="mt-2 text-center text-muted">© 2020 Copyright:Vedesh Gawande</p>
+</footer>
 {% endblock content %}

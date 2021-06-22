@@ -189,17 +189,17 @@ def handlelogout(request):
     return redirect('/login')
 
 def usertransactions(request):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated:    
+        orderdict=[]
+        for order in Order.objects.filter(username=request.user,complete=True):
+            listobj=[]
+            for item in order.orderitem_set.all():    
+                product=Product.objects.get(pk=item.product_id)
+                listobj.append({"name":product.name,"desc":product.desc,"image":product.image,"price":product.price,"quantity":item.quantity})
+            orderdict.append({"products":listobj,"date_ordered":order.date_ordered,"address":order.address,"orderid":order.id,"total":order.get_cart_total})
+        orderdict.reverse()
         context=getdictionary(request)
-        listobj=[]
-        products=Product.objects.all()
-        for order in Order.objects.filter(username=request.user, complete=True):
-            for item in order.orderitem_set.all():
-                for product in products:
-                    if(item.product_id==product.id):
-                        listobj.append({"name":product.name,'price':product.price,'image':product.image,'quantity':item.quantity,'date_ordered':str(order.date_ordered)})
-        listobj.reverse()
-        return render(request,"store/usertransactions.html",{'items':listobj,'cartItems':context['cartItems'],'lenitems':len(listobj)})
+        return render(request,"store/adminorders.html",{'orderdict':orderdict,'cartItems':context['cartItems']})
     return redirect('/login')
         
 def adminorders(request):
@@ -210,6 +210,8 @@ def adminorders(request):
             for item in order.orderitem_set.all():    
                 product=Product.objects.get(pk=item.product_id)
                 listobj.append({"name":product.name,"desc":product.desc,"image":product.image,"price":product.price,"quantity":item.quantity})
-            orderdict.append({"products":listobj,"date_ordered":order.date_ordered,"address":order.address,"orderid":order.id})
-        return render(request,"store/adminorders.html",{'orderdict':orderdict})
+            orderdict.append({"products":listobj,"date_ordered":order.date_ordered,"address":order.address,"orderid":order.id,"total":order.get_cart_total})
+        orderdict.reverse()
+        context=getdictionary(request)
+        return render(request,"store/adminorders.html",{'orderdict':orderdict,'cartItems':context['cartItems']})
     return HttpResponse('You are not authorized to view this page<br><a href="/">Home</a>') 

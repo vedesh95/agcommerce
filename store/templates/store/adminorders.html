@@ -1,17 +1,26 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
-<div>
-    {% for i in orderdict %}
-      <div>
-        <h6 class="my-0">OrderId: {{i.orderid}}</h6>
-        {% for j in i.products %}
-            <p class="text-muted">{{j.name}} x {{j.quantity}}</p>
-        {% endfor %}   
-      </div>
-      <p class="text-muted adminorderspara">{{i.date_ordered}}</p>
-      <p class="text-muted">{{i.address}}</p>
-    {% endfor %}
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-6 order-md-2 mb-4">
+      <ul class="list-group mb-3">
+      {% for i in orderdict %}
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+          <small><strong>OrderID:{{i.orderid}}</strong></small><br>
+          {% for j in i.products %}
+              <small class="text-muted">{{j.name}}  x  {{j.quantity}}</small><br>
+          {% endfor %}
+          <small class="text-muted mt-2"><strong>Order Date:</strong>{{i.date_ordered}}</small><br>
+          <small class="text-muted"><strong>Address:</strong>{{i.address}}</small><br>
+          </div>
+          <span class="text-muted">₹{{i.total}}</span>
+        </li>
+      {% endfor %}
+      </ul>
+
+  </div>
 </div>
 {% endblock content %}
 

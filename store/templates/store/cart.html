@@ -1,7 +1,8 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center align-items-center">
     <div class="col-md-6 col-lg-8 order-md-last">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
         <span class="text-muted">Your cart</span>
@@ -14,16 +15,15 @@
                   <img class="cart_image" src={{item.product.image}} alt="">
                   <div>
                     <h6 class="my-0">{{item.product.name}}</h6>
-                    <small class="text-muted">Best Ganesha ever</small>
-                    <div>
-                        <strong><small class="text">₹{{item.product.price}}</small></strong>
+                    <div class="mt-1">
+                        <small class="text">₹{{item.product.price}}</small>
                     </div>
 
-                    <div class="shopping_cart_quantity">
+                    <div class="shopping_cart_quantity mt-2">
                         
-                        <a href="/updateItem/{{item.product.id}}/add"><button class="btn btn-secondary btn-circle btn-sm btn_margin" type="submit" name="button">+</button></a>
+                        <a href="/updateItem/{{item.product.id}}/add"><button class="btn btn-secondary btn-circle btn-sm mr-1" type="submit" name="button">+</button></a>
                         <small class="text">{{item.quantity}}</small>
-                        <a href="/updateItem/{{item.product.id}}/remove"><button class="btn btn-secondary btn-circle btn-sm btn_margin" type="submit" name="button">-</button></a>
+                        <a href="/updateItem/{{item.product.id}}/remove"><button class="btn btn-secondary btn-circle btn-sm ml-1" type="submit" name="button">-</button></a>
                     </div>
                         
 
@@ -40,6 +40,7 @@
       </ul>
       <a href="/checkout"><button class="w-100 btn btn-primary btn-md" type="submit">Proceed to Checkout</button></a>
     </div>
+  </div>
 </div>
 
 {% endblock content %}

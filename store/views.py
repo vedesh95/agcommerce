@@ -8,7 +8,6 @@ import datetime
 
 from django.views.decorators.csrf import csrf_exempt
 from PayTm import Checksum
-MERCHANT_KEY = "RUaUi@XhKSmm6Kon"
 
 # Create your views here.
 def getdictionary(request):
@@ -98,7 +97,6 @@ def processorder(request):
         amount=order.get_cart_total
         cust_id=request.user.username
         param_dict = {
-                'MID': 'MvSsfq56187483642964',
                 'ORDER_ID': str(order.id)+'D'+str(datetime.datetime.now().timestamp()),
                 'TXN_AMOUNT': str(amount),
                 'CUST_ID': cust_id,
